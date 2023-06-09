@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jogo de Dados</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Jogo de Dados</h1>
+
+  <div class="container">
+    <div class="dice-container">
+      <h2>Jogador</h2>
+      <p id="player-dice" class="dice-value">-</p>
+      <button id="roll-player-dice" onclick="rollPlayerDice()" disabled>Rolar</button>
+    </div>
+
+    <div class="dice-container">
+      <h2>Máquina</h2>
+      <p id="computer-dice" class="dice-value">-</p>
+    </div>
+  </div>
+
+  <h2 id="result"></h2>
+
+  <script>
+    function rollPlayerDice() {
+  var playerDice = Math.floor(Math.random() * 6) + 1;
+  var computerDice = Math.floor(Math.random() * 6) + 1;
+
+  document.getElementById('player-dice').textContent = playerDice;
+  document.getElementById('computer-dice').textContent = computerDice;
+
+  var resultElement = document.getElementById('result');
+  if (playerDice > computerDice) {
+    resultElement.textContent = 'Você ganhou!';
+  } else if (playerDice < computerDice) {
+    resultElement.textContent = 'A máquina ganhou!';
+  } else {
+    resultElement.textContent = 'Empate!';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('roll-player-dice').addEventListener('click', rollPlayerDice);
+  document.getElementById('roll-player-dice').disabled = false;
+});
+
+  </script>
+</body>
+</html>
+
